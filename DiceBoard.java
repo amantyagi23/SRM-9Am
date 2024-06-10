@@ -1,26 +1,28 @@
 public class DiceBoard {
 
-    static void countDice(int currValue, int endValue, String result) {
+    static String countDice(int currValue, int endValue, String result) {
 
         if (currValue == endValue) {
-            System.out.print(result + ", ");
-            return;
+            return result + ", ";
         }
 
         if (currValue > endValue) {
-            return;
+            return "";
         }
+        String res = "";
         for (int i = 1; i <= 6; i++) {
-            if (endValue >= currValue) {
+            if (currValue <= endValue) {
                 currValue = currValue + i;
-                countDice(currValue, endValue, result + i);
-                currValue = currValue - 1;
+                res = res + countDice(currValue, endValue, result + i);
+                currValue = currValue - i;
             }
-
         }
+
+        return res;
+
     }
 
     public static void main(String[] args) {
-        countDice(0, 20, "");
+        System.out.println(countDice(0, 20, ""));
     }
 }
