@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+
 class TreeNode {
     int data;
     TreeNode left, right;
@@ -59,6 +63,32 @@ public class Main {
 
     }
 
+    // public void BFS(Node root) {
+
+    List<Integer> list = new ArrayList<Integer>();if(root==null)
+    {
+        return list;
+    }
+    Queue<Node> q = new LinkedList<Node>();
+
+    q.add(root);
+
+    while(!q.isEmpty())
+    {
+        int level = q.size();
+
+        for (int i = 0; i < level; i++) {
+            int root = q.poll();
+            if (root.left != null) {
+                q.add(root.left);
+            }
+            if (root.right != null) {
+                q.add(root.right);
+            }
+        }
+    }return list;
+    }
+
     //
 
     public static void main(String[] args) {
@@ -72,6 +102,7 @@ public class Main {
         tree.insert(6);
         tree.insert(8);
         tree.inOrder();
+        List<List<
 
     }
 
